@@ -3,147 +3,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log Systems | Advanced Technical Consultancy Coimbatore</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+    <!-- SEO & Social -->
+    <title>Log Systems | Advanced Technical & Scientific Consultancy — Coimbatore</title>
+    <meta name="description" content="Log Systems is Coimbatore's premier technical consultancy — embedded systems, IoT, robotics, PCB design, astrophysics, and advanced mathematics research.">
+    <meta name="keywords" content="embedded systems Coimbatore, IoT consultancy, PCB design, robotics, technical consultancy Tamil Nadu">
+    <link rel="canonical" href="https://logsystems.in/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://logsystems.in/">
+    <meta property="og:title" content="Log Systems | Technical & Scientific Consultancy">
+    <meta property="og:description" content="Bridging industrial hardware engineering and core scientific research. Based in Coimbatore, Tamil Nadu.">
+    <meta property="og:image" content="https://logsystems.in/og-preview.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Log Systems | Technical Consultancy">
+    <meta name="twitter:description" content="Embedded systems, IoT, robotics, PCB design and scientific research — Coimbatore.">
+
+    <!-- Fonts: preconnect first, then load -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
 
     <style>
+        /* ─── TOKENS ─────────────────────────────────────────────── */
         :root {
-            --bg: #030508;
-            --card-bg: rgba(15, 23, 42, 0.4);
-            --border: rgba(255, 255, 255, 0.08);
-            --accent: #00f2ff;
-            --text-main: #f1f5f9;
-            --text-dim: #94a3b8;
+            --bg:         #030508;
+            --card-bg:    rgba(15, 23, 42, 0.45);
+            --border:     rgba(255, 255, 255, 0.08);
+            --accent:     #00f2ff;
+            --accent-dim: rgba(0, 242, 255, 0.12);
+            --text:       #f1f5f9;
+            --text-dim:   #94a3b8;
+            --ease:       cubic-bezier(0.33, 1, 0.68, 1);
+            --nav-h:      72px;
         }
 
-        * { box-sizing: border-box; scroll-behavior: smooth; }
+        /* ─── RESET ──────────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; }
+        * { margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
-            color: var(--text-main);
-            margin: 0;
+            color: var(--text);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* BACKGROUND MESH */
+        img { display: block; max-width: 100%; }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ─── BACKGROUND ─────────────────────────────────────────── */
         .bg-wrapper {
             position: fixed;
             inset: 0;
             z-index: -1;
-            background: var(--bg);
+            pointer-events: none;
         }
 
-        .mesh-gradient {
+        /* Static SVG blob instead of filter:blur — no repaint cost */
+        .bg-wrapper svg {
             position: absolute;
             inset: 0;
-            background: 
-                radial-gradient(circle at 15% 20%, rgba(0, 242, 255, 0.12), transparent 45%),
-                radial-gradient(circle at 85% 80%, rgba(0, 50, 255, 0.12), transparent 45%);
-            filter: blur(100px);
+            width: 100%;
+            height: 100%;
+            opacity: 0.9;
         }
 
-        /* NAVIGATION */
+        /* ─── NAV ────────────────────────────────────────────────── */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
+            padding: 0 8%;
+            height: var(--nav-h);
             position: fixed;
             width: 100%;
             top: 0;
-            background: rgba(3, 5, 8, 0.7);
+            background: rgba(3, 5, 8, 0.72);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
+            transition: height 0.4s var(--ease), background 0.3s ease;
+        }
+
+        nav.compact {
+            height: 56px;
+            background: rgba(3, 5, 8, 0.92);
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-family: 'Outfit';
-            font-weight: 800;
-            letter-spacing: 1px;
-            font-size: 1.1rem;
+            gap: 11px;
+            font-family: 'Bebas Neue', 'Impact', sans-serif;
+            font-weight: 400;
+            letter-spacing: 2px;
+            font-size: 1.15rem;
         }
 
-        .logo img { height: 32px; filter: drop-shadow(0 0 10px var(--accent)); }
+        .logo img {
+            height: 30px;
+            filter: drop-shadow(0 0 8px var(--accent));
+            transition: transform 0.3s var(--ease);
+        }
 
-        /* HERO SECTION */
+        .logo:hover img { transform: rotate(-8deg) scale(1.1); }
+
+        /* Nav links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s var(--ease);
+        }
+
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active { color: var(--accent); }
+        .nav-links a.active::after { width: 100%; }
+
+        .nav-cta {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent) !important;
+            padding: 8px 20px;
+            border-radius: 100px;
+            transition: background 0.3s ease, color 0.3s ease !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent) !important;
+            color: #000 !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        /* Hamburger (mobile) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobile nav drawer */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: var(--nav-h);
+            left: 0;
+            right: 0;
+            background: rgba(3, 5, 8, 0.97);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 8%;
+            z-index: 999;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: transform 0.3s var(--ease), opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .mobile-nav.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 14px 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s ease;
+        }
+
+        .mobile-nav a:last-child { border-bottom: none; }
+        .mobile-nav a:hover { color: var(--accent); }
+
+        /* ─── HERO ───────────────────────────────────────────────── */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 10%;
-            background: linear-gradient(rgba(3, 5, 8, 0.85), rgba(3, 5, 8, 0.85)), 
-                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            padding-top: var(--nav-h);
+            /* Static parallax — no background-attachment:fixed */
+            background:
+                linear-gradient(rgba(3,5,8,0.82), rgba(3,5,8,0.88)),
+                url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=75')
+                center/cover no-repeat;
+            position: relative;
         }
 
-        .hero img {
-            width: 100px;
-            margin-bottom: 30px;
-            animation: float 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        .hero-logo {
+            width: 90px;
+            margin-bottom: 28px;
+            animation: float 6s var(--ease) infinite;
+            will-change: transform;
         }
 
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-18px); }
+        }
+
+        .hero-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 18px;
+        }
 
         .hero h1 {
-            font-family: 'Outfit';
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            margin: 0 0 20px 0;
-            line-height: 0.9;
-            background: linear-gradient(180deg, #fff 0%, #475569 100%);
-            background-clip: text; 
+            font-family: 'Bebas Neue', 'Impact', sans-serif;
+            font-size: clamp(4.5rem, 14vw, 11rem);
+            font-weight: 400;
+            line-height: 0.88;
+            letter-spacing: 3px;
+            margin-bottom: 26px;
+            background: linear-gradient(180deg, #ffffff 0%, #d1d5db 35%, #6b7280 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
             color: var(--text-dim);
-            max-width: 550px;
-            margin-bottom: 40px;
-            line-height: 1.6;
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 36px;
         }
 
-        /* BUTTONS */
-        .cta-btn {
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Scroll cue */
+        .scroll-cue {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-dim);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: scrollBob 2.5s ease-in-out infinite;
+        }
+
+        .scroll-cue svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--text-dim);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+        }
+
+        @keyframes scrollBob {
+            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+            50%       { transform: translateX(-50%) translateY(6px); opacity: 1; }
+        }
+
+        /* ─── BUTTONS ─────────────────────────────────────────────── */
+        .btn {
+            display: inline-block;
+            padding: 16px 38px;
+            border-radius: 100px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: transform 0.35s var(--ease), background 0.3s ease, box-shadow 0.35s ease, color 0.3s ease;
+            cursor: pointer;
+            border: none;
+            will-change: transform;
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .btn-solid {
             background: #fff;
             color: #000;
-            padding: 18px 40px;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: inline-block;
-            border: none;
-            cursor: pointer;
         }
 
-        .cta-btn:hover {
-            transform: scale(1.05);
+        .btn-solid:hover {
+            transform: scale(1.05) translateY(-2px);
             background: var(--accent);
-            box-shadow: 0 0 40px rgba(0, 242, 255, 0.4);
+            box-shadow: 0 14px 36px rgba(0, 242, 255, 0.28);
         }
 
-        /* BENTO GRID */
+        .btn-ghost {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-ghost:hover {
+            background: var(--accent-dim);
+            color: #fff;
+            transform: scale(1.04) translateY(-2px);
+        }
+
+        /* ─── SECTIONS ───────────────────────────────────────────── */
         .container {
             max-width: 1200px;
-            margin: 0 auto 100px;
-            padding: 80px 5% 0;
+            margin: 0 auto;
+            padding: 100px 5% 0;
         }
 
         .section-label {
@@ -152,253 +386,760 @@
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 4px;
-            font-size: 0.7rem;
-            margin-bottom: 50px;
+            font-size: 0.68rem;
+            margin-bottom: 52px;
             font-weight: 600;
         }
 
+        /* ─── BENTO GRID ─────────────────────────────────────────── */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 200px;
-            gap: 20px;
+            grid-auto-rows: 220px;
+            gap: 18px;
         }
 
         .bento-item {
             background: var(--card-bg);
-            border-radius: 24px;
-            padding: 35px;
+            border-radius: 22px;
+            padding: 30px;
             position: relative;
             overflow: hidden;
             border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: transform 0.5s var(--ease), border-color 0.35s ease, box-shadow 0.5s ease;
             background-size: cover;
             background-position: center;
+            will-change: transform;
         }
 
-        .item-embedded { background-image: linear-gradient(rgba(3,5,8,0.7), rgba(3,5,8,0.9)), url('https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80'); }
-        .item-iot { background-image: linear-gradient(rgba(3,5,8,0.7), rgba(3,5,8,0.9)), url('https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80'); }
-        .item-robotics { background-image: linear-gradient(rgba(3,5,8,0.7), rgba(3,5,8,0.9)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80'); }
-        .item-pcb { background-image: linear-gradient(rgba(3,5,8,0.7), rgba(3,5,8,0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80'); }
+        /* Lazy-load backgrounds via JS — set data-bg, not inline background-image */
+        .bento-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(3,5,8,0.95) 10%, rgba(3,5,8,0.35) 100%);
+            z-index: 1;
+        }
 
-        .bento-item h3 { font-family: 'Outfit'; font-size: 1.4rem; margin: 0 0 8px 0; z-index: 2; }
-        .bento-item p { font-size: 0.9rem; color: var(--text-dim); margin: 0; z-index: 2; line-height: 1.4; }
-        
+        .bento-item h3 {
+            font-family: 'Bebas Neue', 'Impact', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            margin: 0 0 6px 0;
+            z-index: 2;
+            color: #fff;
+            position: relative;
+        }
+
+        .bento-item p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 0;
+            z-index: 2;
+            line-height: 1.45;
+            position: relative;
+        }
+
+        .bento-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-7px) scale(1.01);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Keyboard focus for bento links */
+        .bento-item:focus-within {
+            border-color: var(--accent);
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
         .item-lg { grid-column: span 2; grid-row: span 2; }
         .item-md { grid-column: span 2; }
 
-        .bento-item:hover { border-color: var(--accent); transform: scale(1.02); }
+        /* ─── TESTIMONIALS ───────────────────────────────────────── */
+        .testimonials {
+            margin-top: 100px;
+        }
 
-        /* CONTACT & MAP BOX */
-        .contact-box {
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .testimonial-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 32px;
-            padding: 50px;
-            margin-top: 100px;
-            backdrop-filter: blur(10px);
-        }
-
-        .grid-2 { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; }
-
-        input, textarea {
-            width: 100%;
-            padding: 16px;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: white;
-            margin-bottom: 15px;
-            font-family: inherit;
-            transition: 0.3s;
-        }
-
-        input:focus, textarea:focus { outline: none; border-color: var(--accent); background: rgba(0,0,0,0.5); }
-
-        /* MAP INTEGRATION */
-        .map-wrapper {
-            width: 100%;
-            height: 300px;
             border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            margin: 20px 0;
-            filter: grayscale(1) invert(0.92) contrast(1.2); /* Techy dark map look */
+            padding: 28px;
+            transition: border-color 0.3s ease, transform 0.4s var(--ease);
         }
 
-        /* SUCCESS STATE */
-        .fade { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .fade.show { opacity: 1; transform: translateY(0); }
+        .testimonial-card:hover {
+            border-color: rgba(0, 242, 255, 0.3);
+            transform: translateY(-4px);
+        }
 
-        /* WHATSAPP FLOAT */
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            width: 60px;
-            height: 60px;
+        .stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 14px;
+        }
+
+        .star {
+            width: 14px;
+            height: 14px;
+            background: var(--accent);
+            clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+        }
+
+        .testimonial-card blockquote {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            z-index: 2000;
-            transition: 0.3s;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            border: 1px solid var(--border);
         }
-        .wa-float:hover { transform: rotate(12deg) scale(1.1); }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 900px) {
-            .grid-2 { grid-template-columns: 1fr; gap: 30px; }
-            .bento-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+        .avatar-cyan  { background: rgba(0,242,255,0.12); color: var(--accent); }
+        .avatar-blue  { background: rgba(55,138,221,0.15); color: #85B7EB; }
+        .avatar-green { background: rgba(99,153,34,0.15); color: #97C459; }
+
+        .author-info .name  { font-size: 0.85rem; font-weight: 600; }
+        .author-info .role  { font-size: 0.75rem; color: var(--text-dim); margin-top: 2px; }
+
+        /* ─── CONTACT ─────────────────────────────────────────────── */
+        .contact-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 50px;
+            margin-top: 100px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+        }
+
+        .contact-form h2,
+        .contact-location h2 {
+            font-family: 'Bebas Neue', 'Impact', sans-serif;
+            font-size: 2.6rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .contact-form .sub,
+        .contact-location .sub {
+            color: var(--text-dim);
+            font-size: 0.88rem;
+            margin-bottom: 26px;
+        }
+
+        /* Form fields */
+        .field {
+            width: 100%;
+            padding: 15px 18px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 14px;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            outline: none;
+            resize: none;
+        }
+
+        .field::placeholder { color: #4a5568; }
+
+        .field:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 242, 255, 0.12);
+        }
+
+        /* Map */
+        .map-wrapper {
+            width: 100%;
+            height: 230px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin: 18px 0;
+            filter: grayscale(1) invert(0.9);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 10px;
+        }
+
+        .detail-label {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            color: var(--text-dim);
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+
+        .detail-value a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .detail-value a:hover { color: var(--accent); }
+
+        /* ─── SUCCESS STATE ──────────────────────────────────────── */
+        .success-state {
+            text-align: center;
+            padding: 50px 20px;
+            grid-column: span 2;
+        }
+
+        .success-state h2 {
+            font-family: 'Bebas Neue', 'Impact', sans-serif;
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .success-state p { color: var(--text-dim); }
+
+        /* ─── FOOTER ─────────────────────────────────────────────── */
+        footer {
+            margin-top: 100px;
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-size: 0.72rem;
+            color: #475569;
+            letter-spacing: 2px;
+        }
+
+        /* ─── WHATSAPP ────────────────────────────────────────────── */
+        .wa-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #25D366;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+            z-index: 2000;
+            transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+            will-change: transform;
+            text-decoration: none;
+        }
+
+        .wa-float:hover {
+            transform: rotate(10deg) scale(1.14);
+            box-shadow: 0 12px 36px rgba(37, 211, 102, 0.35);
+        }
+
+        .wa-float:focus-visible {
+            outline: 3px solid #25D366;
+            outline-offset: 3px;
+        }
+
+        .wa-float svg { fill: white; width: 30px; height: 30px; }
+
+        /* ─── FADE ANIMATION ──────────────────────────────────────── */
+        .fade {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+            will-change: opacity, transform;
+        }
+
+        .fade.show { opacity: 1; transform: translateY(0); }
+
+        /* Stagger children */
+        .fade-group .fade:nth-child(1) { transition-delay: 0.05s; }
+        .fade-group .fade:nth-child(2) { transition-delay: 0.13s; }
+        .fade-group .fade:nth-child(3) { transition-delay: 0.21s; }
+        .fade-group .fade:nth-child(4) { transition-delay: 0.29s; }
+        .fade-group .fade:nth-child(5) { transition-delay: 0.37s; }
+        .fade-group .fade:nth-child(6) { transition-delay: 0.45s; }
+        .fade-group .fade:nth-child(7) { transition-delay: 0.53s; }
+        .fade-group .fade:nth-child(8) { transition-delay: 0.61s; }
+
+        /* ─── RESPONSIVE ─────────────────────────────────────────── */
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .item-lg, .item-md { grid-column: span 2; }
+            .testimonial-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .mobile-nav { display: block; }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-divider {
+                border-left: none !important;
+                padding-left: 0 !important;
+                border-top: 1px solid var(--border);
+                padding-top: 36px;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 200px;
+            }
+
             .item-lg, .item-md { grid-column: span 1; grid-row: span 1; }
-            .hero h1 { font-size: 3rem; }
-            .contact-box { padding: 30px; }
-            nav { padding: 15px 5%; }
-            .loc-col { border-left: none !important; padding-left: 0 !important; border-top: 1px solid var(--border); padding-top: 30px; }
+
+            .contact-box { padding: 28px 20px; }
+            .hero h1 { font-size: 4rem; }
         }
     </style>
 </head>
 
 <body>
 
-<div class="bg-wrapper">
-    <div class="mesh-gradient"></div>
+<!-- ── STATIC BACKGROUND BLOBS (no filter:blur repaint) ── -->
+<div class="bg-wrapper" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <radialGradient id="g1" cx="15%" cy="20%" r="45%">
+                <stop offset="0%" stop-color="rgba(0,242,255,0.13)"/>
+                <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <radialGradient id="g2" cx="85%" cy="80%" r="45%">
+                <stop offset="0%" stop-color="rgba(0,50,255,0.12)"/>
+                <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+        </defs>
+        <rect width="1440" height="900" fill="url(#g1)"/>
+        <rect width="1440" height="900" fill="url(#g2)"/>
+    </svg>
 </div>
 
-<nav>
-    <div class="logo">
-        <img src="logo.png" alt="Log Systems">
+<!-- ── NAV ── -->
+<nav id="main-nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="logo" aria-label="Log Systems home">
+        <img src="logo.png" alt="Log Systems logo" width="30" height="30">
         LOG SYSTEMS
-    </div>
-    <div style="font-size: 0.75rem; color: var(--text-dim); font-weight: 600; letter-spacing: 1.5px;">COIMBATORE HUB</div>
+    </a>
+
+    <ul class="nav-links" role="list">
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#testimonials" class="nav-link">Clients</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#contact" class="nav-link nav-cta">Start a Project</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
 </nav>
 
-<section class="hero">
-    <img src="logo.png" alt="Log Systems Logo">
+<!-- Mobile nav drawer -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <a href="#services"     onclick="closeMobileNav()">Services</a>
+    <a href="#testimonials" onclick="closeMobileNav()">Clients</a>
+    <a href="#contact"      onclick="closeMobileNav()">Contact</a>
+    <a href="#contact"      onclick="closeMobileNav()">Start a Project →</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home" aria-label="Hero section">
+    <img
+        src="logo.png"
+        alt="Log Systems"
+        class="hero-logo"
+        width="90"
+        height="90"
+    >
+    <p class="hero-eyebrow">Coimbatore Hub · Est. 2021</p>
     <h1>Technical Reality</h1>
-    <p>Empowering engineers through precision hardware guidance and industrial IoT consultancy at our Coimbatore innovation hub.</p>
-    <a class="cta-btn" href="#contact">Initialize Project</a>
+    <p>Bridging the gap between industrial hardware engineering and core scientific research — from PCB to astrophysics.</p>
+    <div class="hero-buttons">
+        <a href="#contact" class="btn btn-solid">Initialize Project</a>
+        <a href="#services" class="btn btn-ghost">Explore Services</a>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="scroll-cue" aria-hidden="true">
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
 </section>
 
-<div class="container">
-    <span class="section-label">Our Domain Expertise</span>
-    
-    <div class="bento-grid fade">
-        <div class="bento-item item-lg item-embedded">
+<!-- ── SERVICES ── -->
+<div class="container" id="services">
+    <span class="section-label" role="heading" aria-level="2">Our Domain Expertise</span>
+
+    <div class="bento-grid fade-group">
+
+        <div class="bento-item item-lg fade"
+             data-bg="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=800&q=75">
+            <div class="overlay"></div>
             <h3>Embedded Systems</h3>
-            <p>Architecting core hardware logic for performance and scale.</p>
+            <p>Architecting core hardware logic for performance and industrial scale.</p>
         </div>
-        <div class="bento-item item-md item-iot">
+
+        <div class="bento-item fade"
+             data-bg="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600&q=75">
+            <div class="overlay"></div>
+            <h3>Astrophysics</h3>
+            <p>Space-grade instrumentation and cosmic data processing.</p>
+        </div>
+
+        <div class="bento-item fade"
+             data-bg="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=600&q=75">
+            <div class="overlay"></div>
             <h3>IoT Ecosystems</h3>
             <p>Connecting devices to the cloud via secure telemetry.</p>
         </div>
-        <div class="bento-item item-robotics">
+
+        <div class="bento-item item-md fade"
+             data-bg="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=75">
+            <div class="overlay"></div>
+            <h3>Advanced Mathematics</h3>
+            <p>Algorithmic optimization, cryptography, and signal processing.</p>
+        </div>
+
+        <div class="bento-item fade"
+             data-bg="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?auto=format&fit=crop&w=600&q=75">
+            <div class="overlay"></div>
+            <h3>Material Science</h3>
+            <p>Exploring nanomaterials and semiconductor properties.</p>
+        </div>
+
+        <div class="bento-item fade"
+             data-bg="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?auto=format&fit=crop&w=600&q=75">
+            <div class="overlay"></div>
+            <h3>Applied Physics</h3>
+            <p>Quantum mechanics and classical dynamics for hardware.</p>
+        </div>
+
+        <div class="bento-item fade"
+             data-bg="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=75">
+            <div class="overlay"></div>
             <h3>Robotics</h3>
-            <p>Kinematics & Intelligent Control.</p>
+            <p>Kinematics and intelligent control systems.</p>
         </div>
-        <div class="bento-item item-pcb">
+
+        <div class="bento-item fade"
+             data-bg="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=75">
+            <div class="overlay"></div>
             <h3>PCB Design</h3>
-            <p>Industrial Grade Layouts.</p>
+            <p>Industrial-grade layouts and rapid prototyping.</p>
         </div>
+
     </div>
 
-    <div class="contact-box fade" id="contact">
-        <div class="grid-2" id="form-wrapper">
-            <form id="project-form" action="https://formspree.io/f/mgopwpkn" method="POST">
-                <h2 style="font-family: 'Outfit'; font-size: 2.2rem; margin-top: 0;">Start a Project</h2>
-                <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 25px;">Submit your specs for a technical review by our lead mentors.</p>
-                
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address / Phone Number" required>
-                <textarea name="message" rows="4" placeholder="Briefly describe about your Project idea " required></textarea>
-                <button type="submit" id="submit-btn" class="cta-btn" style="width: 100%;">Deploy Request</button>
-            </form>
+    <!-- ── TESTIMONIALS ── -->
+    <section class="testimonials fade" id="testimonials" aria-label="Client testimonials">
+        <span class="section-label" role="heading" aria-level="2">What Clients Say</span>
 
-            <div style="border-left: 1px solid var(--border); padding-left: 50px;" class="loc-col">
-                <h2 style="font-family: 'Outfit'; font-size: 2.2rem; margin-top: 0;">The Hub</h2>
-                <p style="color: var(--text-dim); font-size: 0.9rem;">Visit our lab for hands-on project mentoring.</p>
-                
-                <div class="map-wrapper">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2396169503695!2d77.01461881399156!3d11.0206403008556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8579e41e17ec1%3A0xc782019a6f893c57!2sLOG%20SYSTEMS!5e0!3m2!1sen!2sin!4v1774371931364!5m2!1sen!2sin" 
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+        <div class="testimonial-grid fade-group">
+
+            <div class="testimonial-card fade">
+                <div class="stars" aria-label="5 out of 5 stars">
+                    <div class="star"></div><div class="star"></div><div class="star"></div>
+                    <div class="star"></div><div class="star"></div>
                 </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.85rem; margin-bottom: 20px;">
-                    <div>
-                        <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">LOCATION</p>
-                        <p style="opacity: 0.7; margin: 0;">33, Masakalipalayam Rd,<br>Peelamedu, Coimbatore</p>
-                    </div>
-                    <div>
-                        <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">CONNECT</p>
-                        <p style="opacity: 0.7; margin: 0;">logsystemscbe@gmail.com<br>+91 81100 56006</p>
+                <blockquote>"Log Systems delivered our embedded firmware on time and well beyond spec. Their hardware-software co-design expertise is genuinely rare in Coimbatore."</blockquote>
+                <div class="testimonial-author">
+                    <div class="author-avatar avatar-cyan">RK</div>
+                    <div class="author-info">
+                        <div class="name">Rajan K.</div>
+                        <div class="role">CTO, Avantika Robotics</div>
                     </div>
                 </div>
-
-<a href="https://maps.google.com/?cid=14376054723327900759&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="cta-btn" style="padding: 12px 25px; font-size: 0.75rem; background: var(--accent); color: #000;">Get Directions</a>            </div>
-        </div>
-
-        <div id="success-view" style="display: none; text-align: center; padding: 40px 0;">
-            <div style="font-size: 60px; margin-bottom: 20px;">⚡</div>
-            <h2 style="font-family: 'Outfit'; color: var(--accent); font-size: 2.5rem;">Transmission Received.</h2>
-            <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto 30px;">Our lead engineer will review your specs and contact you within 24 hours.</p>
-            <div style="background: rgba(0, 242, 255, 0.05); border: 1px solid var(--accent); padding: 20px; border-radius: 20px; display: inline-block;">
-                <p style="margin: 0; font-size: 0.9rem;">Urgent project? Call us directly: <strong>+91 81100 56006</strong></p>
             </div>
+
+            <div class="testimonial-card fade">
+                <div class="stars" aria-label="5 out of 5 stars">
+                    <div class="star"></div><div class="star"></div><div class="star"></div>
+                    <div class="star"></div><div class="star"></div>
+                </div>
+                <blockquote>"Our IoT sensor network went from concept to live deployment in six weeks. The team's depth in both cloud telemetry and PCB layout made the difference."</blockquote>
+                <div class="testimonial-author">
+                    <div class="author-avatar avatar-blue">PM</div>
+                    <div class="author-info">
+                        <div class="name">Priya M.</div>
+                        <div class="role">Founder, AgriSense Labs</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card fade">
+                <div class="stars" aria-label="5 out of 5 stars">
+                    <div class="star"></div><div class="star"></div><div class="star"></div>
+                    <div class="star"></div><div class="star"></div>
+                </div>
+                <blockquote>"Phenomenal mentorship for our final-year project. The Log Systems team guided us through signal processing theory and real hardware implementation simultaneously."</blockquote>
+                <div class="testimonial-author">
+                    <div class="author-avatar avatar-green">AS</div>
+                    <div class="author-info">
+                        <div class="name">Arun S.</div>
+                        <div class="role">M.E. Student, PSG Tech</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <div class="contact-box fade" id="contact">
+        <div class="contact-grid" id="form-wrapper">
+
+            <!-- Form -->
+            <div class="contact-form">
+                <h2>Start a Project</h2>
+                <p class="sub">Submit your specs for a technical review by our lead mentors.</p>
+
+                <form id="project-form" action="https://formspree.io/f/mgopwpkn" method="POST" novalidate>
+                    <input
+                        class="field"
+                        type="text"
+                        name="name"
+                        placeholder="Full Name"
+                        required
+                        autocomplete="name"
+                        aria-label="Full Name"
+                    >
+                    <input
+                        class="field"
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required
+                        autocomplete="email"
+                        aria-label="Email Address"
+                    >
+                    <textarea
+                        class="field"
+                        name="message"
+                        rows="4"
+                        placeholder="Briefly describe your project idea"
+                        required
+                        aria-label="Project description"
+                    ></textarea>
+                    <button type="submit" id="submit-btn" class="btn btn-solid" style="width:100%;">
+                        Deploy Request
+                    </button>
+                </form>
+            </div>
+
+            <!-- Location -->
+            <div class="contact-location contact-divider" style="border-left:1px solid var(--border); padding-left:50px;">
+                <h2>The Hub</h2>
+                <p class="sub">Visit our lab for hands-on project mentoring.</p>
+
+                <div class="map-wrapper">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2396182929288!2d77.01719349999999!3d11.020640199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8579e41e17ec1%3A0xc782019a6f893c57!2sLOG%20SYSTEMS!5e0!3m2!1sen!2sin!4v1774421728132!5m2!1sen!2sin"
+                        title="Log Systems location map"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div>
+
+                <a
+                    href="https://maps.google.com/?cid=14376054723327900759"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-ghost"
+                    style="width:100%; text-align:center; margin-bottom:24px; padding:13px 0;"
+                >
+                    Get Directions
+                </a>
+
+                <div class="contact-details">
+                    <div>
+                        <p class="detail-label">Location</p>
+                        <p class="detail-value">33, Masakalipalayam Rd,<br>Peelamedu, Coimbatore</p>
+                    </div>
+                    <div>
+                        <p class="detail-label">Connect</p>
+                        <p class="detail-value">
+                            <a href="mailto:logsystemscbe@gmail.com">logsystemscbe@gmail.com</a><br>
+                            <a href="tel:+918110056006">+91 81100 56006</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
-<a href="https://wa.me/918110056006" class="wa-float" target="_blank">
-    <svg width="32" height="32" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.402.831 2.948 1.27 4.526 1.271h.006c5.451 0 9.886-4.437 9.889-9.891.002-2.642-1.029-5.125-2.903-7c-1.873-1.873-4.355-2.903-6.996-2.904-5.455 0-9.893 4.438-9.895 9.893-.001 1.705.437 3.367 1.269 4.821l-.979 3.574 3.658-.96c1.332.726 2.829 1.109 4.353 1.11z"/></svg>
-</a>
-
-<footer style="padding: 60px 0; text-align: center; border-top: 1px solid var(--border); font-size: 0.75rem; color: #475569; letter-spacing: 2px;">
-    © 2026 LOG SYSTEMS TECHNICAL CONSULTANCY | COIMBATORE
+<!-- ── FOOTER ── -->
+<footer>
+    <p>© 2026 Log Systems Technical Consultancy &nbsp;|&nbsp; Coimbatore, Tamil Nadu</p>
 </footer>
 
+<!-- ── WHATSAPP FLOAT ── -->
+<a
+    href="https://wa.me/918110056006"
+    class="wa-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat with us on WhatsApp"
+>
+    <svg viewBox="0 0 32 32" role="img" aria-label="WhatsApp">
+        <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.476 2.016 7.788l-2.016 7.356 7.535-1.977c2.235 1.189 4.793 1.833 7.465 1.833 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.352c-2.483 0-4.799-0.662-6.787-1.815l-0.486-0.282-4.462 1.169 1.189-4.341-0.31-0.493c-1.258-2.001-1.986-4.363-1.986-6.89 0-7.362 5.99-13.352 13.352-13.352s13.352 5.99 13.352 13.352-5.99 13.352-13.352 13.352zM22.503 19.34c-0.355-0.178-2.103-1.038-2.428-1.156-0.325-0.118-0.562-0.178-0.799 0.178s-0.917 1.156-1.124 1.393c-0.207 0.237-0.414 0.266-0.769 0.089-0.355-0.178-1.5-0.553-2.857-1.764-1.056-0.942-1.769-2.105-1.976-2.46s-0.022-0.547 0.155-0.724c0.159-0.159 0.355-0.414 0.533-0.621s0.237-0.355 0.355-0.592c0.118-0.237 0.059-0.444-0.030-0.621s-0.799-1.925-1.096-2.636c-0.289-0.692-0.582-0.599-0.799-0.61-0.206-0.011-0.444-0.013-0.681-0.013s-0.621 0.089-0.947 0.444c-0.325 0.355-1.243 1.214-1.243 2.961s1.272 3.435 1.45 3.672c0.178 0.237 2.503 3.821 6.064 5.357 0.847 0.366 1.508 0.584 2.023 0.748 0.851 0.27 1.626 0.232 2.239 0.141 0.684-0.101 2.103-0.859 2.399-1.688s0.296-1.54 0.207-1.688c-0.089-0.148-0.325-0.237-0.681-0.414z"/>
+    </svg>
+</a>
+
 <script>
-    // Reveal on scroll
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("show"); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll(".fade").forEach(el => obs.observe(el));
+    /* ── NAV: compact on scroll + active link ── */
+    const nav = document.getElementById('main-nav');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = ['home', 'services', 'testimonials', 'contact'];
 
-    // Form Handling
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('compact', window.scrollY > 60);
+
+        // Active link highlight
+        let current = 'home';
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el && window.scrollY >= el.offsetTop - 120) current = id;
+        });
+        navLinks.forEach(a => {
+            const href = a.getAttribute('href').replace('#', '');
+            a.classList.toggle('active', href === current);
+        });
+    }, { passive: true });
+
+    /* ── HAMBURGER ── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('open');
+        mobileNav.classList.toggle('show', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+        mobileNav.setAttribute('aria-hidden', !isOpen);
+    });
+
+    function closeMobileNav() {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('show');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+    }
+
+    /* ── LAZY LOAD bento backgrounds ── */
+    const imageObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const bg = el.dataset.bg;
+                if (bg) el.style.backgroundImage = `url('${bg}')`;
+                imageObs.unobserve(el);
+            }
+        });
+    }, { rootMargin: '200px' });
+
+    document.querySelectorAll('[data-bg]').forEach(el => imageObs.observe(el));
+
+    /* ── FADE IN on scroll ── */
+    const fadeObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                fadeObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade').forEach(el => fadeObs.observe(el));
+
+    /* ── FORM SUBMIT ── */
     const form = document.getElementById('project-form');
-    const wrapper = document.getElementById('form-wrapper');
-    const success = document.getElementById('success-view');
 
-    form.onsubmit = async (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = document.getElementById('submit-btn');
-        btn.innerText = "Transmitting...";
+        btn.textContent = 'Transmitting…';
         btn.disabled = true;
 
-        const response = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        });
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
 
-        if (response.ok) {
-            wrapper.style.display = 'none';
-            success.style.display = 'block';
-            window.scrollTo({ top: document.getElementById('contact').offsetTop - 100, behavior: 'smooth' });
-        } else {
-            alert("Error. Please try WhatsApp.");
-            btn.innerText = "Deploy Request";
+            if (res.ok) {
+                document.getElementById('form-wrapper').innerHTML = `
+                    <div class="success-state">
+                        <h2>Transmission Received.</h2>
+                        <p>Our lead engineer will review your specs within 24 hours.</p>
+                    </div>`;
+            } else {
+                throw new Error('Server error');
+            }
+        } catch {
+            alert('Connection error. Please reach us on WhatsApp for urgent requests.');
+            btn.textContent = 'Deploy Request';
             btn.disabled = false;
         }
-    };
+    });
 </script>
 
 </body>
 </html>
-
